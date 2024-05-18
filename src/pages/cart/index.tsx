@@ -1,3 +1,4 @@
+import FooterComponent from "@/components/Footer";
 import HeaderComponent from "@/components/Header";
 import SingleCartComponent from "@/components/SingleCart";
 import { useSets } from "@/hook/useSets";
@@ -44,6 +45,7 @@ const cartComponent = () => {
             ))
           : "Loading..."}
       </div>
+      <FooterComponent></FooterComponent>
     </>
   );
 };
