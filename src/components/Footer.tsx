@@ -10,7 +10,7 @@ const FooterComponent = () => {
   const reset = useCounter((state) => state.reset);
 
   return (
-    <footer className="footer items-center p-4 bg-neutral text-neutral-content mt-8">
+    <footer className="footer items-center p-4 bg-neutral text-neutral-content mt-8 ">
       <aside className="items-center grid-flow-col">
         <svg
           width="36"

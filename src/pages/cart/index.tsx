@@ -45,7 +45,6 @@ const cartComponent = () => {
             ))
           : "Loading..."}
       </div>
-      <FooterComponent></FooterComponent>
     </>
   );
 };
