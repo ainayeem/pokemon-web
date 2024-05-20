@@ -19,7 +19,7 @@ function HeaderComponent() {
 
   return (
     <>
-      <AppBar position="static" className="bg-black">
+      <AppBar position="static" className="!bg-black">
         <Container maxWidth="xl">
           <Toolbar disableGutters>
             <Link href="/">

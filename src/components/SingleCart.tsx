@@ -9,20 +9,23 @@ const SingleCartComponent = ({ cartObj }: { cartObj: any }) => {
   return (
     <div className="">
       <div className="">
-        <div className="max-w-xs bg-white rounded-lg overflow-hidden shadow-md">
-          <Image
-            className="w-full "
-            src={cartObj?.images?.logo}
-            height={0}
-            width={0}
-            sizes="100vw"
-            alt="set logo"
-          ></Image>
-          <div className="px-4 py-2">
+        <div className="card w-96 bg-base-100 shadow-xl">
+          <figure className="px-10 pt-10 h-52">
+            <Image
+              className="w-full "
+              src={cartObj?.images?.logo}
+              height={0}
+              width={0}
+              sizes="100vw"
+              alt="set logo"
+            ></Image>
+          </figure>
+          <div className="card-body items-center text-center">
             <h2 className="text-gray-800 font-semibold text-xl mb-2">
               {cartObj?.name || "loading.."}
             </h2>
-            <div className="flex justify-center mb-2">
+
+            <div className="card-actions">
               <button
                 onClick={() => {
                   decrement(1);

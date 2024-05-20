@@ -26,12 +26,14 @@ const cartComponent = () => {
     return (
       <>
         <HeaderComponent />
-        <p className="font-semibold text-4xl">No items in cart yet...</p>
+        <p className="font-semibold text-4xl text-center">
+          No items in cart yet...
+        </p>
       </>
     );
   }
 
-  console.log("cartObjs", cartObjs);
+  // console.log("cartObjs", cartObjs);
   return (
     <>
       <HeaderComponent></HeaderComponent>

@@ -38,12 +38,12 @@ export const getStaticProps: GetStaticProps<{
       return set;
     },
   });
-  console.log("I am server");
+  // console.log("I am server");
   return { props: { dehydratedState: dehydrate(queryClient) }, revalidate: 30 };
 };
 
 const SetPage = (props: any, { selectedSet }: { selectedSet: any }) => {
-  console.log(props);
+  // console.log(props);
   // Router.params.setid
   // console.log(props);
 
@@ -53,17 +53,25 @@ const SetPage = (props: any, { selectedSet }: { selectedSet: any }) => {
     isLoading,
     isError,
   } = useSet(router?.query?.setId as string);
+
   const { mutate: updateName } = useUpdateSetName();
   const [setName, setSetName] = useState(set?.name);
-  console.log(set);
-
-  //--error
-  if (isError) {
-    return <ErrorPage statusCode={404} />;
-  }
-
+  // console.log(set);
   const increment = useCounter((state) => state.increment);
   const addId = useCounter((state) => state.addId);
+
+  //--error
+  if (isLoading) {
+    return (
+      <div className="h-screen flex items-center justify-center">
+        <span className="text-3xl mr-4 mb-3 font-semibold">Loading</span>
+        <span className="loading loading-dots loading-lg"></span>
+      </div>
+    );
+  }
+  if (!set) {
+    return <ErrorPage statusCode={404} />;
+  }
 
   return (
     <>
@@ -75,7 +83,7 @@ const SetPage = (props: any, { selectedSet }: { selectedSet: any }) => {
           <figure>
             <Image
               className="w-full "
-              src={set?.images.logo || ""}
+              src={set?.images?.logo || ""}
               height={0}
               width={0}
               sizes="100vw"

@@ -12,6 +12,7 @@ import Link from "next/link";
 import { Set } from "pokemon-tcg-sdk-typescript/dist/sdk";
 import React from "react";
 import ModalComponent from "@/components/Modal";
+import IosShareIcon from "@mui/icons-material/IosShare";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -66,42 +67,48 @@ export default function Home(props: { serverSets: Set[] }) {
 
           {sortedSets?.map((set: Set) => {
             return (
-              <div
-                key={set.id}
-                className="max-w-xs bg-white rounded-lg overflow-hidden shadow-md mx-auto mb-16 px-6"
-              >
-                <Link href={`sets/${set.id}`}>
-                  <div>
+              <div className="card w-96 bg-base-100 shadow-xl">
+                <figure className="px-10 pt-10 h-52">
+                  <Link href={`sets/${set.id}`}>
                     <Image
                       className="w-full "
-                      src={set?.images.logo || ""}
-                      height={0}
-                      width={0}
+                      src={set?.images?.logo || ""}
+                      height={100}
+                      width={100}
                       sizes="100vw"
                       alt="set logo"
                     ></Image>
-                    <div className="px-4 py-2">
-                      <h2 className="text-gray-800 font-semibold text-xl mb-2">
-                        {set?.name || "loading.."}
-                      </h2>
-                    </div>
+                  </Link>
+                </figure>
+                <div className="card-body items-center text-center">
+                  <Link href={`sets/${set.id}`}>
+                    <h2 className="text-gray-800 font-semibold text-xl mb-2">
+                      {set?.name || "loading.."}
+                    </h2>
+                  </Link>
+                  <div className="card-actions">
+                    <button
+                      onClick={() => openModal(set)}
+                      type="button"
+                      className="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
+                    >
+                      Quick View
+                    </button>
                   </div>
-                </Link>
-
-                <div className="flex justify-center mb-2">
-                  <button
-                    onClick={() => openModal(set)}
-                    type="button"
-                    className="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
-                  >
-                    Quick View
-                  </button>
                 </div>
               </div>
             );
           })}
           <ModalComponent selectedSet={selectedSet}></ModalComponent>
           {isError && "Error"}
+          <button
+            onClick={() => {
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }}
+            className="btn fixed bottom-20 right-0 rounded-r-none"
+          >
+            <IosShareIcon />
+          </button>
         </div>
       </div>
     </div>

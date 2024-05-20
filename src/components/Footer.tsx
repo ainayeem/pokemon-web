@@ -4,7 +4,6 @@ import useCounter from "@/zustand/useCounterStore";
 
 const FooterComponent = () => {
   console.log("footer component");
-  // let {setStateVal, stateVal} = useContext(IncrementContext);
   const increment = useCounter((state) => state.increment);
   const decrement = useCounter((state) => state.decrement);
   const reset = useCounter((state) => state.reset);
